@@ -1,0 +1,147 @@
+[gd_scene load_steps=4 format=3 uid="uid://dddfc3yc6hxbf"]
+
+[ext_resource type="Texture2D" uid="uid://dosd1s6dlf58f" path="res://assets/sand-bg.png" id="1_jnpob"]
+[ext_resource type="PackedScene" uid="uid://0edp3nq6g1gg" path="res://scenes/metal_detector.tscn" id="2_kl2vh"]
+[ext_resource type="PackedScene" uid="uid://xeh0ehnef0d7" path="res://scenes/treasure.tscn" id="3_j306s"]
+
+[node name="BeachLevel" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(272, 274)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(816.75, 273.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(1361.75, 273.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(1362, 816)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(816.75, 815.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(272, 816)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(893, 275)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(1437.75, 274.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(1982.75, 274.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(1983, 817)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(1437.75, 816.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+position = Vector2(893, 817)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+position = Vector2(271.75, 1350)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+position = Vector2(816.5, 1349.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D15" type="Sprite2D" parent="."]
+position = Vector2(1361.5, 1349.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D16" type="Sprite2D" parent="."]
+position = Vector2(1361.75, 1892)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D17" type="Sprite2D" parent="."]
+position = Vector2(816.5, 1891.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D18" type="Sprite2D" parent="."]
+position = Vector2(271.75, 1892)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D19" type="Sprite2D" parent="."]
+position = Vector2(892.75, 1351)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D20" type="Sprite2D" parent="."]
+position = Vector2(1437.5, 1350.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D21" type="Sprite2D" parent="."]
+position = Vector2(1982.5, 1350.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D22" type="Sprite2D" parent="."]
+position = Vector2(1982.75, 1893)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D23" type="Sprite2D" parent="."]
+position = Vector2(1437.5, 1892.75)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="Sprite2D24" type="Sprite2D" parent="."]
+position = Vector2(892.75, 1893)
+scale = Vector2(5.455, 5.455)
+texture = ExtResource("1_jnpob")
+
+[node name="MetalDetector" parent="." instance=ExtResource("2_kl2vh")]
+position = Vector2(580, 453)
+
+[node name="Camera2D" type="Camera2D" parent="MetalDetector"]
+position = Vector2(-2, -129)
+limit_left = 0
+limit_top = -1
+limit_right = 2250
+limit_bottom = 2150
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Treasure" parent="." instance=ExtResource("3_j306s")]
+position = Vector2(573, 251)
+scale = Vector2(2.85, 2.85)
+
+[node name="Node2D" type="Node2D" parent="."]

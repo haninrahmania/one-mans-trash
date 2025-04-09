@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://0edp3nq6g1gg"]
+
+[ext_resource type="Script" path="res://scenes/metal_detector.gd" id="1_5jpio"]
+[ext_resource type="Texture2D" uid="uid://h4kqu4c3gnwf" path="res://assets/metal-detector.png" id="1_pvwvt"]
+[ext_resource type="AudioStream" uid="uid://cokcbjidkurkq" path="res://assets/beep.mp3" id="3_p22nf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pkk1t"]
+radius = 47.2652
+
+[node name="MetalDetector" type="Area2D"]
+z_index = 1
+script = ExtResource("1_5jpio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_pkk1t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.005, 4.005)
+texture = ExtResource("1_pvwvt")
+
+[node name="BeepPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p22nf")
+
+[node name="BeepTimer" type="Timer" parent="."]
+autostart = true
