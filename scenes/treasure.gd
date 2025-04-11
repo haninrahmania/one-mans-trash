@@ -3,10 +3,12 @@ extends Node2D
 @onready var sand_chunks = $SandChunks.get_children()
 @onready var treasure_sprite = $TreasureSprite
 @onready var area = $Area2D
+@export var item_name: String
 var collected := false
 signal treasure_collected
 
 
+var camera: Camera2D = null 
 
 var chunk_index := 0
 var dug := false
@@ -16,6 +18,11 @@ func _ready():
 	treasure_sprite.visible = false
 	for chunk in sand_chunks:
 		chunk.visible = false  # Hide treasure at the start
+		
+	await get_tree().process_frame
+	camera = get_viewport().get_camera_2d()
+	if camera == null:
+		print("⚠️ No Camera2D found in the current viewport.")
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -72,28 +79,43 @@ func throw_chunk(chunk: Node2D):
 	# Cleanup
 	tween.tween_callback(Callable(chunk, "queue_free"))
 	
+	
 func suck_treasure_into_inventory():
+	if camera == null:
+		print("Camera not set on treasure!")
+		return
+
 	var tween = create_tween()
 
 	var screen_size = get_viewport_rect().size
-	var target_pos = to_local(Vector2(screen_size.x / 2, screen_size.y - 100))
+	var screen_target = Vector2(screen_size.x / 2, screen_size.y - 100)
+	var world_target = camera.get_screen_transform().affine_inverse() * screen_target
 
+	var local_target = to_local(world_target)
 
-	# Lift slightly first
 	var lift_pos = treasure_sprite.position + Vector2(0, -30)
 	tween.tween_property(treasure_sprite, "position", lift_pos, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-	# Then zip into inventory
-	tween.tween_property(treasure_sprite, "position", target_pos, 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-
-	# Shrink and fade for flair
+	tween.tween_property(treasure_sprite, "position", local_target, 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	tween.tween_property(treasure_sprite, "scale", Vector2(0.2, 0.2), 0.4)
 	tween.tween_property(treasure_sprite, "modulate:a", 0.0, 0.4)
 
-	# Optionally queue_free or trigger inventory logic
-	tween.tween_callback(func(): treasure_sprite.queue_free())
+	tween.tween_callback(Callable(self, "collect"))
 	
 func collect():
 	collected = true
 	emit_signal("treasure_collected")
+	Inventory.add_item(item_name) 
+	print("Collect called, item:", item_name)
+	Inventory.print_inventory()
+	# Update label
+	var ui = get_tree().root.get_node("BeachLevel") 
+	ui.update_inventory_count()
+	ui.show_treasure_popup(item_name)
 	queue_free()
+	
+	var total_items_needed:= 15
+	
+	if Inventory.get_total_item_count() >= total_items_needed:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene_to_file("res://scenes/WinScreen.tscn")

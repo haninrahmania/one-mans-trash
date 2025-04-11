@@ -10,7 +10,9 @@
 radius = 25.318
 
 [node name="Treasure" type="Node2D"]
+scale = Vector2(2.85, 2.85)
 script = ExtResource("1_gl04a")
+item_name = "Coin"
 
 [node name="TreasureSprite" type="Sprite2D" parent="."]
 position = Vector2(1, 9)

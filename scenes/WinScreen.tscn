@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnqiwg1mi7wsf"]
+
+[ext_resource type="Script" path="res://scenes/win_screen.gd" id="1_0wbo3"]
+[ext_resource type="Texture2D" uid="uid://cqvnq0f5ua5d" path="res://assets/win-bg-new.png" id="2_fvbxn"]
+[ext_resource type="Texture2D" uid="uid://dss48hsrbno0o" path="res://assets/playagain-button_new.png" id="3_uycf3"]
+[ext_resource type="Texture2D" uid="uid://bw0se77b35gla" path="res://assets/playagain-button-hover-new.png" id="4_qiiq4"]
+[ext_resource type="AudioStream" uid="uid://mr8eehr5uvpq" path="res://assets/button-click.mp3" id="6_21jsb"]
+[ext_resource type="Texture2D" uid="uid://pjse4bnhcmdx" path="res://assets/exit-crab-new.png" id="6_slhn7"]
+[ext_resource type="Texture2D" uid="uid://cbl6i1tipale4" path="res://assets/exit-crab-hover-new.png" id="7_harch"]
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0wbo3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fvbxn")
+stretch_mode = 5
+
+[node name="PlayAgainButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.614
+anchor_right = 0.45
+anchor_bottom = 0.614
+offset_left = 216.6
+offset_top = 21.128
+offset_right = 621.6
+offset_bottom = 277.128
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_uycf3")
+texture_pressed = ExtResource("3_uycf3")
+texture_hover = ExtResource("4_qiiq4")
+stretch_mode = 4
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_21jsb")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 326.0
+offset_top = 212.0
+offset_right = -326.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemListContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="."]
+offset_left = 32.0
+offset_top = 400.0
+offset_right = 277.0
+offset_bottom = 640.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_slhn7")
+texture_pressed = ExtResource("6_slhn7")
+texture_hover = ExtResource("7_harch")
+stretch_mode = 4

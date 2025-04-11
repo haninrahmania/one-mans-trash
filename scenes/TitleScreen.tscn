@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://q5jgb1m7y2a8"]
+
+[ext_resource type="Script" path="res://scenes/title_screen.gd" id="1_b4iap"]
+[ext_resource type="Texture2D" uid="uid://c8w2yanxykpfq" path="res://assets/title-new.png" id="2_2ccru"]
+[ext_resource type="Texture2D" uid="uid://b0rl4ai5uo4u3" path="res://assets/play-button-new.png" id="3_kqc1g"]
+[ext_resource type="Texture2D" uid="uid://dk8rn7486hsxs" path="res://assets/play-button-hover-new.png" id="4_jlnbu"]
+[ext_resource type="Texture2D" uid="uid://pjse4bnhcmdx" path="res://assets/exit-crab-new.png" id="5_q80q8"]
+[ext_resource type="Texture2D" uid="uid://cbl6i1tipale4" path="res://assets/exit-crab-hover-new.png" id="6_3urqf"]
+[ext_resource type="AudioStream" uid="uid://mr8eehr5uvpq" path="res://assets/button-click.mp3" id="7_15uxw"]
+[ext_resource type="AudioStream" uid="uid://dkk863ducbbcr" path="res://assets/beach-ambience.mp3" id="8_awgsm"]
+
+[node name="TitleScreen" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_b4iap")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2ccru")
+stretch_mode = 5
+
+[node name="PlayButton" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.614
+anchor_right = 0.45
+anchor_bottom = 0.614
+offset_right = 455.0
+offset_bottom = 278.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_kqc1g")
+texture_pressed = ExtResource("3_kqc1g")
+texture_hover = ExtResource("4_jlnbu")
+stretch_mode = 4
+
+[node name="ExitButton" type="TextureButton" parent="."]
+offset_left = 168.0
+offset_top = 400.0
+offset_right = 413.0
+offset_bottom = 640.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_q80q8")
+texture_pressed = ExtResource("5_q80q8")
+texture_hover = ExtResource("6_3urqf")
+stretch_mode = 4
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_15uxw")
+
+[node name="BeachAmbience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_awgsm")
+autoplay = true

@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://rfwx2rjabiw"]
+
+[ext_resource type="Script" path="res://scenes/treasure.gd" id="1_v6q4j"]
+[ext_resource type="Texture2D" uid="uid://dolx4pn7crrsc" path="res://assets/grape-cap.png" id="2_y113f"]
+[ext_resource type="AudioStream" uid="uid://blabn6lntsff8" path="res://assets/dig.wav" id="4_hewfr"]
+[ext_resource type="Texture2D" uid="uid://clm41i2ybxtgy" path="res://assets/sand-chunk-new.png" id="5_86kdw"]
+[ext_resource type="AudioStream" uid="uid://b6aftgkc7fot4" path="res://assets/treasure.mp3" id="5_hrh0w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_65lg7"]
+radius = 25.318
+
+[node name="TreasureGrapeCap" type="Node2D"]
+scale = Vector2(2.85, 2.85)
+script = ExtResource("1_v6q4j")
+item_name = "GrapeCap"
+
+[node name="TreasureSprite" type="Sprite2D" parent="."]
+position = Vector2(9, 5)
+scale = Vector2(1.04, 1)
+texture = ExtResource("2_y113f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.00509, 1)
+shape = SubResource("CircleShape2D_65lg7")
+
+[node name="DigSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hewfr")
+
+[node name="TreasureSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hrh0w")
+
+[node name="SandChunks" type="Node2D" parent="."]
+
+[node name="SandChunk" type="Sprite2D" parent="SandChunks"]
+position = Vector2(3, 9)
+texture = ExtResource("5_86kdw")
+
+[node name="SandChunk5" type="Sprite2D" parent="SandChunks"]
+position = Vector2(3, 9)
+texture = ExtResource("5_86kdw")
+
+[node name="SandChunk2" type="Sprite2D" parent="SandChunks"]
+position = Vector2(27, 16)
+rotation = -1.59992
+texture = ExtResource("5_86kdw")
+
+[node name="SandChunk3" type="Sprite2D" parent="SandChunks"]
+position = Vector2(-27, -12)
+rotation = 1.22165
+texture = ExtResource("5_86kdw")
+
+[node name="SandChunk4" type="Sprite2D" parent="SandChunks"]
+position = Vector2(11, 3)
+rotation = -2.38292
+texture = ExtResource("5_86kdw")
+
+[connection signal="input_event" from="Area2D" to="." method="_input_event"]

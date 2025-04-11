@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://t4y4fyfntcnk"]
+
+[ext_resource type="Script" path="res://scenes/treasure.gd" id="1_hdvxl"]
+[ext_resource type="Texture2D" uid="uid://dnknrxn3xgab4" path="res://assets/bottle-opener.png" id="2_jiiuw"]
+[ext_resource type="Texture2D" uid="uid://clm41i2ybxtgy" path="res://assets/sand-chunk-new.png" id="3_bytlb"]
+[ext_resource type="AudioStream" uid="uid://blabn6lntsff8" path="res://assets/dig.wav" id="4_rjpcr"]
+[ext_resource type="AudioStream" uid="uid://b6aftgkc7fot4" path="res://assets/treasure.mp3" id="5_mtfht"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_65lg7"]
+radius = 25.318
+
+[node name="TreasureBottleOpener" type="Node2D"]
+scale = Vector2(2.85, 2.85)
+script = ExtResource("1_hdvxl")
+item_name = "BottleOpener"
+
+[node name="TreasureSprite" type="Sprite2D" parent="."]
+position = Vector2(1.4035, -2.80702)
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("2_jiiuw")
+
+[node name="SandChunks" type="Node2D" parent="."]
+
+[node name="SandChunk" type="Sprite2D" parent="SandChunks"]
+position = Vector2(3, 9)
+texture = ExtResource("3_bytlb")
+
+[node name="SandChunk5" type="Sprite2D" parent="SandChunks"]
+position = Vector2(3, 9)
+texture = ExtResource("3_bytlb")
+
+[node name="SandChunk2" type="Sprite2D" parent="SandChunks"]
+position = Vector2(27, 16)
+rotation = -1.59992
+texture = ExtResource("3_bytlb")
+
+[node name="SandChunk3" type="Sprite2D" parent="SandChunks"]
+position = Vector2(-27, -12)
+rotation = 1.22165
+texture = ExtResource("3_bytlb")
+
+[node name="SandChunk4" type="Sprite2D" parent="SandChunks"]
+position = Vector2(11, 3)
+rotation = -2.38292
+texture = ExtResource("3_bytlb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.00509, 1)
+shape = SubResource("CircleShape2D_65lg7")
+
+[node name="DigSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rjpcr")
+
+[node name="TreasureSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mtfht")
+
+[connection signal="input_event" from="Area2D" to="." method="_input_event"]
