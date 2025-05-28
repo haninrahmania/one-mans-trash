@@ -14,7 +14,7 @@ func update_win_display():
 		
 	# Add 'Collected' banner at the top
 	var banner = TextureRect.new()
-	banner.texture = preload("res://assets/inventory-banner.png")  # Replace with your actual path
+	banner.texture = preload("res://assets/inventory-banner.png")  
 	banner.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	banner.custom_minimum_size = Vector2(500, 100)
 	banner.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -24,18 +24,6 @@ func update_win_display():
 		var count = Inventory.get_item_count(item_name)
 		#var item_row = HBoxContainer.new()
 #
-		## Icon
-		#var icon = TextureRect.new()
-		#icon.texture = Inventory.item_sprites.get(item_name, null)
-		#icon.custom_minimum_size = Vector2(32, 32)
-#
-		## Label
-		#var label = Label.new()
-		#label.text = "%s: %d" % [item_name.capitalize(), count]
-#
-		#item_row.add_child(icon)
-		#item_row.add_child(label)
-		#item_list_container.add_child(item_row)
 		
 	# Outer container to hold shelf background + item overlay
 		var layered_container = Control.new()
@@ -44,7 +32,7 @@ func update_win_display():
 
 		# Shelf background (bottom layer)
 		var shelf_bg = TextureRect.new()
-		shelf_bg.texture = preload("res://assets/shelf.png")  # replace with your actual path
+		shelf_bg.texture = preload("res://assets/shelf.png")  
 		shelf_bg.expand = true
 		shelf_bg.stretch_mode = TextureRect.STRETCH_SCALE
 		shelf_bg.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -85,6 +73,7 @@ func update_win_display():
 func _on_playAgain_pressed():
 	$ButtonClick.play()
 	await $ButtonClick.finished
+	Inventory.reset()
 	get_tree().change_scene_to_file("res://scenes/BeachLevel.tscn")
 
 func _on_exit_pressed():

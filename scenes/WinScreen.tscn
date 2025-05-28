@@ -73,6 +73,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 400.0
 offset_right = 277.0

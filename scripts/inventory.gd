@@ -26,6 +26,9 @@ func print_inventory():
 func get_all_items() -> Dictionary:
 	return items
 	
+func reset():
+	items.clear()
+	
 @export var item_sprites: Dictionary = {
 	"Coin": preload("res://assets/coin-new.png"),
 	"GrapeCap": preload("res://assets/grape-cap.png"),

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://0edp3nq6g1gg"]
+[gd_scene load_steps=6 format=3 uid="uid://0edp3nq6g1gg"]
 
 [ext_resource type="Script" path="res://scenes/metal_detector.gd" id="1_5jpio"]
-[ext_resource type="Texture2D" uid="uid://52xiq1atb8c4" path="res://assets/metal-detector-newer.png" id="2_j6sm1"]
+[ext_resource type="Texture2D" uid="uid://bcvvuhp05cgw6" path="res://assets/metal-detector-newest.png" id="2_ibt3v"]
 [ext_resource type="AudioStream" uid="uid://cokcbjidkurkq" path="res://assets/beep.mp3" id="3_p22nf"]
+[ext_resource type="Texture2D" uid="uid://braxji4wu0x1x" path="res://assets/metal-detector-blinker.png" id="4_8ybh8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pkk1t"]
 radius = 47.2652
@@ -16,12 +17,17 @@ position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_pkk1t")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(5, 116)
-scale = Vector2(2.02, 2.02)
-texture = ExtResource("2_j6sm1")
+position = Vector2(7, 126)
+scale = Vector2(1.48125, 1.45583)
+texture = ExtResource("2_ibt3v")
 
 [node name="BeepPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_p22nf")
 
 [node name="BeepTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="Blinker" type="Sprite2D" parent="."]
+position = Vector2(7, 126)
+scale = Vector2(1.44, 1.44)
+texture = ExtResource("4_8ybh8")

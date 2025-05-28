@@ -73,7 +73,7 @@ func update_inventory_display():
 
 		# Shelf background (bottom layer)
 		var shelf_bg = TextureRect.new()
-		shelf_bg.texture = preload("res://assets/shelf.png")  # replace with your actual path
+		shelf_bg.texture = preload("res://assets/shelf.png")  
 		shelf_bg.expand = true
 		shelf_bg.stretch_mode = TextureRect.STRETCH_SCALE
 		shelf_bg.size_flags_horizontal = Control.SIZE_EXPAND_FILL

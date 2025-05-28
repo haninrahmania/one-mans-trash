@@ -20,7 +20,7 @@
 [node name="BeachLevel" type="Node2D"]
 script = ExtResource("1_h64bc")
 treasure_scenes = Array[PackedScene]([ExtResource("5_1oaal"), ExtResource("6_bhcih"), ExtResource("7_iwndy"), ExtResource("5_3mdl7"), ExtResource("6_h46e8"), ExtResource("7_oqanq"), ExtResource("8_wmqsy"), ExtResource("9_6fpqn")])
-num_treasures = 60
+num_treasures = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(285.5, 288)

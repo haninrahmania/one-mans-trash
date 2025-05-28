@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var beep = $BeepPlayer
+@onready var blinker = $Blinker
 @onready var beep_timer = $BeepTimer
 @onready var treasure_container = get_tree().get_current_scene().get_node("TreasureContainer")
 @export var level_size = Vector2(2250, 2100)  
@@ -39,9 +40,7 @@ func _process(delta):
 
 	if closest_treasure:
 		handle_beeping(min_distance)
-	#else:
-		# Use a slower beep when no treasure is nearby
-		#handle_beeping(1000)  # Far distance to simulate no target
+	
 		
 func handle_beeping(distance):
 	var beep_interval = clamp(distance / 300.0, 0.2, 1.0)
@@ -54,8 +53,10 @@ func handle_beeping(distance):
 func stop_beeping():
 	beep_timer.stop()
 	beep.stop()
+	blinker.visible = false
 
 func _on_beep_timer_timeout():
 	#var pitch = clamp(1.5 - distance / 300.0, 0.8, 1.2)
 	#beep.pitch_scale = pitch
 	beep.play()
+	blinker.visible = not blinker.visible
